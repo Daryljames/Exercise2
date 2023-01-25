@@ -108,11 +108,11 @@ namespace Exercise2
                         }
                         else
                         {
-                            foreach (TodoList list in myList)
+                            foreach (TodoList todoListItem in myList)
                             {
-                                if (list.Id == id)
+                                if (todoListItem.Id == id)
                                 {
-                                    List<TodoItem> todoItems = list.GetAllTodoItem();
+                                    List<TodoItem> todoItems = todoListItem.GetAllTodoItem();
                                     bool isForSecondMenu = true;
 
                                     while (isForSecondMenu)
@@ -133,8 +133,17 @@ namespace Exercise2
                                         {
                                             if (secondMenuChoice == 1)
                                             {
-                                                Console.WriteLine(todoItems);
-                                                isSecondMenuOngoing = false;
+                                                if (todoListItem.GetAllTodoItem().Count() == 0)
+                                                {
+                                                    Console.WriteLine("Empty Todo, please add todo items");
+                                                    isSecondMenuOngoing = false;
+                                                }
+                                                else
+                                                {
+                                                    todoListItem.GetAllTodoItem();
+                                                    isSecondMenuOngoing = false;
+                                                }
+
                                             }
                                             else if (secondMenuChoice == 2)
                                             {
@@ -144,6 +153,8 @@ namespace Exercise2
                                                 int numOfTodos = todoItems.Count();
 
                                                 TodoItem todo = new TodoItem(numOfTodos + 1, content);
+
+                                                todoItems.Add(todo);
                                                 isSecondMenuOngoing = false;
                                             }
                                             else if (secondMenuChoice == 3)
