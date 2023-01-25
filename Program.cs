@@ -41,7 +41,8 @@ namespace Exercise2
 
                             foreach (TodoList list in myList)
                             {
-                                list.GetTodoList();
+                                Console.WriteLine(list.GetTodoList());
+                                isContinue = false;
                             }
                         }
                         else
